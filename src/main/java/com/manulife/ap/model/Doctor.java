@@ -3,7 +3,7 @@ package com.manulife.ap.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "doctor")
+@Document(collection = "doctors")
 public class Doctor {
     
     @Id

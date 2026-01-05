@@ -3,11 +3,12 @@ spring:
   cache:
     type: none
 #    cache-names:
-# MongoDB Configuration
+# MongoDB Configuration - Local MongoDB
   data:
     mongodb:
-      uri: mongodb+srv://l21a28669-ba7c-4d24-805a-ce07ba178631:ONjxviMxQ8BcZmu3QFlTS7RhB02aXEvJtl5lR1VKKfg=@mua-mongo-db.n0w5a.azure.mongodb.net/default
-      database: default
+      host: localhost
+      port: 27017
+      database: test
 # 12FA: Eureka - Registry   : Defau
 # 12FA: Logging        
 logging:

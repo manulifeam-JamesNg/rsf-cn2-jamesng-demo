@@ -41,12 +41,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 @EnableHystrixDashboard
-@EnableSwagger2
 @EnableCaching
 @SpringBootApplication
 @ImportResource("classpath:service-config.xml")
 @ComponentScan(basePackages = "com.manulife.ap.*, io.swagger")
-@EnableReactiveMongoRepositories(basePackages = "com.manulife.ap.repository")
+@EnableReactiveMongoRepositories(basePackageClasses = com.manulife.ap.repository.DoctorRepository.class)
 public class Application{
 	@Autowired
 	DiscoveryClient discoveryClient;

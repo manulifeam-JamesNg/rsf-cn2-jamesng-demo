@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  description: 'Sample Swagger file for REST Endpoints'  
+  description: 'Sample Swagger file for REST Endpoints'
   version: 1.0.0
   title: API Store - your-service-name
   termsOfService: 'https://manulife.com/yourterms'
@@ -11,167 +11,35 @@ info:
     url: 'http://www.manulife.com'
 host: yourservice.manulife.com
 basePath: /api/v1
-#Defines the sections
-tags:
-  - name: noun
-    description: Everything about your noun
-    externalDocs:
-      description: Find out more
-      url: 'http://www.manulife.com/yourwebpage'
 schemes:
   - https
 paths:
-  '/noun/{nounID}':
+  '/home':
     get:
-      tags:
-        - noun
-      summary: Find single noun
-      description: Returns a single NounObject
-      operationId: getNoun
+      description: get all doctor
       produces:
         - application/json
-      parameters:
-        - name: nounID
-          in: path
-          description: ID of noun to return
-          required: true
-          type: integer
-          format: int64
       responses:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/NounInfo'
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Noun not found
-    put:
-      tags:
-        - noun
-      summary: Updated noun
-      description: This can only be done by the logged in user.
-      operationId: updateNounByID
-      produces:
-        - application/json
-      parameters:
-        - name: nounID
-          in: path
-          description: name that need to be deleted
-          required: true
-          type: string
-        - in: body
-          name: body
-          description: Updated noun object
-          required: true
-          schema:
-            $ref: '#/definitions/NounInfo'
-      responses:
-        '400':
-          description: Invalid noun id supplied
-        '404':
-          description: noun not found
-    post:
-      tags:
-        - noun
-      summary: Updates a noun in ML with form data
-      description: ''
-      operationId: updateNounForm
-      consumes:
-        - application/x-www-form-urlencoded
-      produces:
-        - application/json
-      parameters:
-        - name: nounID
-          in: path
-          description: ID of noun that needs to be updated
-          required: true
-          type: integer
-          format: int64
-        - name: name
-          in: formData
-          description: Updated name of the noun
-          required: false
-          type: string
-        - name: status
-          in: formData
-          description: Updated status of the noun
-          required: false
-          type: string
-      responses:
-        '405':
-          description: Invalid input
-      security:
-        - nountore_auth:
-            - 'write:noun'
-            - 'read:noun'
-    delete:
-      tags:
-        - noun
-      summary: Deletes a noun
-      description: ''
-      operationId: deleteNounByID
-      produces:
-        - application/json
-      parameters:
-        - name: nounID
-          in: path
-          description: noun id to delete
-          required: true
-          type: integer
-          format: int64
-      responses:
-        '400':
-          description: Invalid noun value
-      security:
-        - nountore_auth:
-            - 'write:noun'
-            - 'read:noun'
-securityDefinitions:
-  nountore_auth:
-    type: oauth2
-    authorizationUrl: 'http://www.manulife.com/api/authenticationUrl'
-    flow: implicit
-    scopes:
-      'write:noun': modify noun in ML
-      'read:noun': read your noun
-  api_key:
-    type: apiKey
-    name: api_key
-    in: header
+            $ref: "#/definitions/HomeResponse"
 definitions:
-  NounInfo:
-    title: Noun Information
-    description: Defines a noun information.
-    type: object
-    required:
-      - name
-      - nounID
+  Doctor:
+    type: "object"
     properties:
-      nounID:
-        type: string
-        format: string
+      id:
+        type: "string"
       name:
-        type: string
-        format: string
-      age:
-        type: integer
-        format: int64
-      email:
-        type: string
-        format: string
-      phone:
-        type: string
-        format: string
-      country:
-        type: string
-        format: string
-      address:
-        type: string
-        format: string
-      dob:
-        type: string
-        format: string
-externalDocs:
-  description: Find out more about Swagger
-  url: 'http://swagger.io'
+        type: "string"
+      gender:
+        type: "string"
+  HomeResponse:
+    type: "object"
+    properties:
+      answerEntity:
+        type: "array"
+        items:
+          $ref: '#/definitions/Doctor'
+        items:
+          $ref: '#/definitions/Doctor'

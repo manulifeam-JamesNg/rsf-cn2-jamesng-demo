@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 /**
  * Stream Way (Functional Programming approach)
- * Routes for /<yourname>/fun/doctors
+ * Routes for /James/fun/doctors
  */
 @Configuration
 public class DoctorRouter {
@@ -20,26 +20,26 @@ public class DoctorRouter {
     public RouterFunction<ServerResponse> route(DoctorHandler handler) {
         return RouterFunctions
                 // Test endpoint as shown in sample
-                .route(RequestPredicates.GET("/ngtszch/hello")
+                .route(RequestPredicates.GET("/James/hello")
                         .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), 
                         handler::test)
                 // GET /fun/doctors - Get all doctors with TEXT_EVENT_STREAM
-                .andRoute(RequestPredicates.GET("/ngtszch/fun/doctors")
+                .andRoute(RequestPredicates.GET("/James/fun/doctors")
                         .and(RequestPredicates.accept(MediaType.TEXT_EVENT_STREAM)), 
                         handler::getAll)
                 // POST /fun/doctors - Insert a doctor
-                .andRoute(RequestPredicates.POST("/ngtszch/insert")
+                .andRoute(RequestPredicates.POST("/James/insert")
                         .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), 
                         handler::insert)
                 // GET /doctors/{doctorId} - Get doctor by ID
-                .andRoute(RequestPredicates.GET("/ngtszch/doctors/{doctorId}"), 
+                .andRoute(RequestPredicates.GET("/James/doctors/{doctorId}"), 
                         handler::getById)
                 // PUT /doctors/{doctorId} - Update doctor
-                .andRoute(RequestPredicates.PUT("/ngtszch/doctors/{doctorId}")
+                .andRoute(RequestPredicates.PUT("/James/doctors/{doctorId}")
                         .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), 
                         handler::updateDoctor)
                 // DELETE /deleteById/{id} - Delete doctor by ID
-                .andRoute(RequestPredicates.DELETE("/ngtszch/deleteById/{id}")
+                .andRoute(RequestPredicates.DELETE("/James/deleteById/{id}")
                         .and(RequestPredicates.accept(MediaType.TEXT_EVENT_STREAM)), 
                         handler::deleteById);
     }

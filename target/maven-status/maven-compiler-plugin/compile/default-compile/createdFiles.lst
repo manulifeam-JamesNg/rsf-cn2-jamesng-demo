@@ -5,7 +5,6 @@ io\swagger\configuration\HomeController.class
 com\manulife\ap\config\SecurityConfig.class
 com\manulife\ap\Application.class
 com\manulife\ap\rsf_connect_mongodb\swagger\api\HomeApiController.class
-com\manulife\ap\controller\DoctorController.class
 com\manulife\ap\repository\DoctorRepository.class
 com\manulife\ap\rsf_connect_mongodb\swagger\api\ApiResponseMessage.class
 com\manulife\ap\rsf_connect_mongodb\swagger\api\HomeApi.class
@@ -15,6 +14,7 @@ io\swagger\Swagger2SpringBoot$ExitException.class
 com\manulife\ap\handler\DoctorHandler.class
 com\manulife\ap\rsf_connect_mongodb\swagger\api\NotFoundException.class
 com\manulife\ap\config\SpringfoxConfig$1.class
+com\manulife\ap\controller\JamesDoctorController.class
 com\manulife\ap\model\Doctor.class
 com\manulife\ap\rsf_connect_mongodb\swagger\model\HomeResponse.class
 io\swagger\RFC3339DateFormat.class

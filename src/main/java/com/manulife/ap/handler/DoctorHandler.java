@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 
 /**
  * Stream Way (Functional Programming) Handler
- * Handles requests for /<yourname>/fun/doctors endpoints
+ * Handles requests for /James/fun/doctors endpoints
  */
 @Component
 public class DoctorHandler {
@@ -21,7 +21,7 @@ public class DoctorHandler {
     private DoctorRepository doctorRepository;
     
     /**
-     * Test endpoint: GET /<yourname>/hello
+     * Test endpoint: GET /James/hello
      */
     public Mono<ServerResponse> test(ServerRequest request) {
         return ServerResponse
@@ -31,7 +31,7 @@ public class DoctorHandler {
     }
     
     /**
-     * Get all doctors: GET /<yourname>/fun/doctors
+     * Get all doctors: GET /James/fun/doctors
      * Returns TEXT_EVENT_STREAM
      */
     public Mono<ServerResponse> getAll(ServerRequest request) {
@@ -42,7 +42,7 @@ public class DoctorHandler {
     }
     
     /**
-     * Get doctor by ID: GET /<yourname>/doctors/{doctorId}
+     * Get doctor by ID: GET /James/doctors/{doctorId}
      */
     public Mono<ServerResponse> getById(ServerRequest request) {
         String doctorId = request.pathVariable("doctorId");

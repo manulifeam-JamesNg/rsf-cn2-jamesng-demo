@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: vs-james-k8s-rsf3
+  namespace: ns-mua-training
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-system/istio-ingressgateway
+  http:
+  - name: james-demo-rsf3
+    match:
+    - uri:
+        prefix: /James
+    route:
+    - destination:
+        host: svc-rsf-james-demo.ns-mua-training.svc.cluster.local
+        port:
+          number: 8080
+      weight: 100
+    timeout: 500ms
+    retries:
+      attempts: 3
+      perTryTimeout: 200ms
+      retryOn: 5xx

@@ -1,16 +1,16 @@
 swagger: '2.0'
 info:
-  description: 'Sample Swagger file for REST Endpoints'
+  description: 'AKS upskill - Rsf demo'
   version: 1.0.0
-  title: API Store - your-service-name
-  termsOfService: 'https://manulife.com/yourterms'
+  title: 'Rsf demo'
+  termsOfService: 'https://www.manulife.com/'
   contact:
-    email: yourname@manulife.com
+    email: ngtszch@mfcgd.com
   license:
     name: Manulife Asia
     url: 'http://www.manulife.com'
-host: yourservice.manulife.com
-basePath: /api/v1
+host: 10.161.64.4
+basePath: /James
 schemes:
   - https
 paths:

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-rsf-james-demo
+  namespace: ns-mua-training
+  labels:
+    app: rsf-james-demo
+spec:
+  type: ClusterIP
+  selector:
+    app: rsf-james-demo
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+    protocol: TCP

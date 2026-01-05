@@ -80,6 +80,18 @@
 		<dependency>
 			<groupId>com.manulife.ap</groupId>
 			<artifactId>rsf-eda-core</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- Spring Boot WebFlux for Functional Routes -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
 		
 		<!-- Spring Boot Reactive MongoDB -->

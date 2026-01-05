@@ -1,0 +1,166 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.manulife.ap</groupId>
+	<artifactId>rsf-connect-mongodb</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>rsf-connect-mongodb micro-service</name>
+	<url>https://mfc.sharepoint.com/sites/asiatemp/asiadigital/DE/Microservices/Home.aspx</url>
+	<description>Customize your project based on generated template file</description>
+
+	<!-- Source control : Need to change according to your github project -->
+	<!-- <scm> <url>https://git.ap.manulife.com/msl</url> <connection>scm:git:https://git.ap.manulife.com/msl/demo-service.git</connection> 
+		<developerConnection>scm:git:https://git.ap.manulife.com/msl/demo-service.git</developerConnection> 
+		<tag>HEAD</tag> </scm> -->
+
+	<!-- Properties -->
+	<properties>
+		<swagger.service.package>com.manulife.ap.rsf-connect-mongodb</swagger.service.package>
+		<swagger-codegen-maven-plugin.version>2.3.0</swagger-codegen-maven-plugin.version>
+		<!-- <team.your.name></team.your.name> <team.your.email></team.your.email> 
+			<team.url></team.url> <team.email></team.email> <team.zone></team.zone> -->
+	</properties>
+
+	<!-- Organization: Add your organization details here -->
+	<organization>
+		<name>${team.name}</name>
+		<url>${team.url}</url>
+	</organization>
+
+	<!-- Developers: Change to your team name, id and emails. etc... -->
+	<developers>
+		<developer>
+			<id>your-name-id</id>
+			<name>${team.your.name}</name>
+			<email>${team.your.email}</email>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>${team.zone}</timezone>
+		</developer>
+	</developers>
+	<!-- Contributors -->
+	<contributors>
+		<contributor>
+			<name>${team.your.name}-id</name>
+			<email>${team.your.email}</email>
+			<url>${project.url}</url>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>${team.zone}</timezone>
+		</contributor>
+	</contributors>
+
+	<!-- Identifies parent RSF pom -->
+	<parent>
+		<groupId>com.manulife.ap</groupId>
+		<artifactId>rsf-eda-parent</artifactId>
+		<version>1.3.0</version>
+		<relativePath/>
+	</parent>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.manulife.ap</groupId>
+				<artifactId>rsf-eda-dependencies</artifactId>
+				<version>1.3.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- Project dependencies -->
+	<dependencies>
+		<!-- RSF EDA CORE -->
+		<dependency>
+			<groupId>com.manulife.ap</groupId>
+			<artifactId>rsf-eda-core</artifactId>
+		</dependency>
+		
+		<!-- Spring Boot Reactive MongoDB -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+		</dependency>
+	</dependencies>
+
+	
+	<!-- Build plugins -->
+	<build>
+		<plugins>
+			<!-- Swagger -->
+			<plugin>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<version>${swagger-codegen-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>common</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<language>spring</language>
+							<basePackage>${swagger.service.package}.swagger</basePackage>
+							<apiPackage>${swagger.service.package}.swagger.api</apiPackage>
+							<configPackage>${swagger.service.package}.swagger.config</configPackage>
+							<modelPackage>${swagger.service.package}.swagger.model</modelPackage>
+							<delegatePackage>${swagger.service.package}.swagger.delegate</delegatePackage>
+							<inputSpec>${project.basedir}/src/main/resources/swagger/swagger-input.yml</inputSpec>
+							<output>${project.basedir}/target/generated-sources</output>
+							<templateDirectory>${project.basedir}/src/main/resources/swagger/templates</templateDirectory>
+							<ignoreFileOverride>${project.basedir}/.swagger-codegen-ignore</ignoreFileOverride>
+							<skipOverwrite>false</skipOverwrite>
+							<withXml>true</withXml>
+							<configOptions>
+								<serializableModel>true</serializableModel>
+								<delegatePattern>true</delegatePattern>
+								<useBeanValidation>true</useBeanValidation>
+								<hideGenerationTimestamp>true</hideGenerationTimestamp>
+								<dateLibrary>joda</dateLibrary>
+							</configOptions>
+						</configuration>
+					</execution>
+					<execution>
+						<id>perftest</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<language>jmeter</language>
+							<inputSpec>${project.basedir}/src/main/resources/swagger/swagger-input.yml</inputSpec>
+							<output>${project.basedir}/src/test/resources/jmeter</output>
+							<ignoreFileOverride>${project.basedir}/.swagger-codegen-ignore</ignoreFileOverride>
+							<skipOverwrite>true</skipOverwrite>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<!-- Profiles -->
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<activatedProperties>dev</activatedProperties>
+				<!-- Add your Sonar authentication key. If not needed keep line commented -->
+				<!-- Use authentication key. -->
+				<!-- <sonar.login></sonar.login> -->
+				<!-- Provide link to your documentation page for project. -->
+				<sonar.host.url>https://sonar.ap.manulife.com/</sonar.host.url>
+				<sonar.links.homepage>${project.url}</sonar.links.homepage>
+				<sonar.language>java</sonar.language>
+				<sonar.links.scm>${project.scm.url}</sonar.links.scm>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
+</project>

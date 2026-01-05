@@ -1,0 +1,35 @@
+---
+groups:
+  - name: develop-env
+    jobs:
+    - deploy-develop
+    resources:
+    - repo-ci
+#    - add your dependent service here
+
+# resources for concourse
+resources:
+  - name: repo-ci
+    type: git
+    source:
+      uri: {{git-url}}
+      branch: {{git-dev-branch}}
+      private_key: {{github-private-key}}
+# - name: your dependent service
+    type: git
+    source:
+#      uri: url of git repo
+      branch: {{git-dev-branch}}
+      username: {{git-username}}
+      password: {{git-password}}
+
+jobs:
+  - name: deploy-develop
+    serial: true
+    public: false
+    plan:
+      - get:  repo-ci
+        resource: repo-ci
+        trigger: true
+      - task: build
+        file: repo-ci/ci/tasks/build.yml

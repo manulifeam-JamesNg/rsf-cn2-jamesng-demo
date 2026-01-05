@@ -1,0 +1,24 @@
+spring:
+# 12FA: Caching for long running services, defaults to none
+  cache:
+    type: none
+#    cache-names:
+# MongoDB Configuration
+  data:
+    mongodb:
+      uri: mongodb+srv://l21a28669-ba7c-4d24-805a-ce07ba178631:ONjxviMxQ8BcZmu3QFlTS7RhB02aXEvJtl5lR1VKKfg=@mua-mongo-db.n0w5a.azure.mongodb.net/default
+      database: default
+# 12FA: Eureka - Registry   : Defau
+# 12FA: Logging        
+logging:
+  level:
+    org.springframework: info
+# 12FAE: Security & management related    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: heapdump,loggers,threaddump,info,metrics,health 
+  info:
+    git:
+      mode: full

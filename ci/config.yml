@@ -1,0 +1,17 @@
+---
+# Change git-url, [dev,sit,uat and prod] space as needed
+git-url: ssh://git@git.ap.manulife.com:8080/<project>/<repo>.git
+git-dev-branch: develop
+git-sit-branch: sit
+
+git-username:
+git-password:
+
+cf-org-prod:
+cf-space-dev: 
+cf-space-sit: 
+cf-space-prod:
+cf-app-name:
+cf-manifest-path-dev: 
+cf-manifest-path-sit:
+cf-manifest-path-prod:

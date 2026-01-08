@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-rsf-connect-mongodb
+  namespace: ns-mua-training
+  labels:
+    app: rsf-connect-mongodb
+spec:
+  type: ClusterIP
+  selector:
+    app: rsf-connect-mongodb
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+    protocol: TCP

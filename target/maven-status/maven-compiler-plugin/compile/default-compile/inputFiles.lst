@@ -7,6 +7,7 @@ C:\Code Folder\rsf-connect-mongodb\target\generated-sources\src\main\java\com\ma
 C:\Code Folder\rsf-connect-mongodb\target\generated-sources\src\main\java\com\manulife\ap\rsf_connect_mongodb\swagger\api\HomeApiDelegate.java
 C:\Code Folder\rsf-connect-mongodb\target\generated-sources\src\main\java\com\manulife\ap\rsf_connect_mongodb\swagger\api\ApiOriginFilter.java
 C:\Code Folder\rsf-connect-mongodb\target\generated-sources\src\main\java\com\manulife\ap\rsf_connect_mongodb\swagger\model\HomeResponse.java
+C:\Code Folder\rsf-connect-mongodb\src\main\java\com\manulife\ap\config\SecurityConfig.java
 C:\Code Folder\rsf-connect-mongodb\target\generated-sources\src\main\java\com\manulife\ap\rsf_connect_mongodb\swagger\api\HomeApi.java
 C:\Code Folder\rsf-connect-mongodb\src\main\java\com\manulife\ap\handler\DoctorHandler.java
 C:\Code Folder\rsf-connect-mongodb\target\generated-sources\src\main\java\com\manulife\ap\rsf_connect_mongodb\swagger\api\ApiException.java
@@ -17,4 +18,5 @@ C:\Code Folder\rsf-connect-mongodb\target\generated-sources\src\main\java\io\swa
 C:\Code Folder\rsf-connect-mongodb\src\main\java\com\manulife\ap\delegateimpl\HomeApiDelegateImpl.java
 C:\Code Folder\rsf-connect-mongodb\target\generated-sources\src\main\java\io\swagger\RFC3339DateFormat.java
 C:\Code Folder\rsf-connect-mongodb\src\main\java\com\manulife\ap\Application.java
+C:\Code Folder\rsf-connect-mongodb\src\main\java\com\manulife\ap\config\SpringfoxConfig.java
 C:\Code Folder\rsf-connect-mongodb\target\generated-sources\src\main\java\com\manulife\ap\rsf_connect_mongodb\swagger\api\HomeApiController.java

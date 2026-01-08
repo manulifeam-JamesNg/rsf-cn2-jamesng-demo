@@ -14,6 +14,7 @@ import reactor.core.publisher.Mono;
  * Annotation Way (Controller approach)
  * REST API for /doctors endpoints
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/doctors")
 public class DoctorController {
@@ -67,14 +68,6 @@ public class DoctorController {
                 })
                 .map(d -> new ResponseEntity<>(d, HttpStatus.OK))
                 .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-    
-    /**
-     * DELETE /doctors - Delete all doctor records
-     */
-    @DeleteMapping
-    public Mono<Void> deleteAllDoctors() {
-        return doctorRepository.deleteAll();
     }
     
     /**

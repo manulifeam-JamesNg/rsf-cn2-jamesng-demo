@@ -1,42 +1,29 @@
 package com.manulife.ap.config;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.ReflectionUtils;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.util.ReflectionUtils;
-import org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping;
 import springfox.documentation.spring.web.plugins.WebMvcRequestHandlerProvider;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Springfox configuration to fix compatibility with Spring Boot 2.7.x
- */
 @Configuration
 @EnableSwagger2
 public class SpringfoxConfig {
 
-    @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("custom-api")
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
-                .build();
-    }
-
     /**
-     * Fix for Springfox 2.9.2 compatibility with Spring Boot 2.7.x
-     * This BeanPostProcessor removes the null PatternParser that causes NullPointerException
+     * Fix for Spring Boot 2.7.x compatibility with Springfox 2.9.2.
+     * Spring Boot 2.7+ uses PathPatternParser by default, but Springfox expects Ant-based matching.
      */
     @Bean
     public static BeanPostProcessor springfoxHandlerProviderBeanPostProcessor() {
@@ -69,5 +56,19 @@ public class SpringfoxConfig {
                 }
             }
         };
+    }
+
+    /**
+     * Docket to scan custom controllers (like HeartBeatController)
+     * This supplements the generated SwaggerDocumentationConfig
+     */
+    @Bean
+    public Docket customApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("custom-controllers")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.manulife.ap.controller"))
+                .paths(PathSelectors.any())
+                .build();
     }
 }

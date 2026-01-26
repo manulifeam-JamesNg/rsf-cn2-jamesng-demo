@@ -27,8 +27,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
 /**
  * Defines the application, supports service registry, circuit breaker 
  * for Spring Boot application.
@@ -44,7 +42,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableCaching
 @SpringBootApplication
 @ImportResource("classpath:service-config.xml")
-@ComponentScan(basePackages = "com.manulife.ap.*, io.swagger")
+@ComponentScan(basePackages = {"com.manulife.ap.*", "io.swagger"})
 @EnableReactiveMongoRepositories(basePackageClasses = com.manulife.ap.repository.DoctorRepository.class)
 public class Application{
 	@Autowired

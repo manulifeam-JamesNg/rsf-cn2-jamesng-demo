@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rsf-connect-mongodb
+  name: rsf-james-demo
   namespace: ns-mua-training
   labels:
-    app: rsf-connect-mongodb
+    app: rsf-james-demo
     version: v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: rsf-connect-mongodb
+      app: rsf-james-demo
       version: v1
   template:
     metadata:
       labels:
-        app: rsf-connect-mongodb
+        app: rsf-james-demo
         version: v1
     spec:
       containers:
-      - name: rsf-connect-mongodb
-        image: artifactory.ap.manulife.com/docker/rsf-connect-mongodb:1.0-SNAPSHOT
+      - name: rsf-james-demo
+        image: https://artifactory.ap.manulife.com/artifactory/docker/aks-demo-alex/1.0-SNAPSHOT/
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

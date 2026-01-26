@@ -3,6 +3,9 @@ spring:
   cache:
     type: none
 #    cache-names:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 # MongoDB Configuration - Local MongoDB
   data:
     mongodb:

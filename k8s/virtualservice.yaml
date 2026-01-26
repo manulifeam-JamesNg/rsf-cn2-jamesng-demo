@@ -1,30 +1,30 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: vs-rsf-connect-mongodb
+  name: vs-rsf-cn1-jamesng-demo
   namespace: ns-mua-training
 spec:
   hosts:
-  - rsf-connect-mongodb.ns-mua-training
-  - svc-rsf-connect-mongodb.ns-mua-training.svc.cluster.local
+  - rsf-cn1-jamesng-demo.ns-mua-training
+  - svc-rsf-cn1-jamesng-demo.ns-mua-training.svc.cluster.local
   gateways:
   - istio-system/istio-ingressgateway
   - mesh
   http:
-  - name: rsf-connect-mongodb-route
+  - name: rsf-cn1-jamesng-demo-route
     match:
     - uri:
-        prefix: /
+        prefix: /james
     rewrite:
       uri: /
     route:
     - destination:
-        host: svc-rsf-connect-mongodb.ns-mua-training.svc.cluster.local
+        host: svc-rsf-cn1-jamesng-demo.ns-mua-training.svc.cluster.local
         port:
           number: 8080
-      weight: 100
-    timeout: 800ms
-    retries:
-      attempts: 3
-      perTryTimeout: 300ms
-      retryOn: 5xx
+    #   weight: 100
+    # timeout: 800ms
+    # retries:
+    #   attempts: 3
+    #   perTryTimeout: 300ms
+    #   retryOn: 5xx

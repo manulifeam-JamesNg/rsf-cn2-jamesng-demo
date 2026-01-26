@@ -33,10 +33,10 @@ public class Doctor  implements Serializable {
   }
 
   /**
-   * Get id
+   * Unique identifier (MongoDB ObjectId)
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Unique identifier (MongoDB ObjectId)")
 
 
   public String getId() {
@@ -53,10 +53,11 @@ public class Doctor  implements Serializable {
   }
 
   /**
-   * Get name
+   * Doctor's name
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "Doctor's name")
+  @NotNull
 
 
   public String getName() {
@@ -73,10 +74,10 @@ public class Doctor  implements Serializable {
   }
 
   /**
-   * Get gender
+   * Doctor's gender
    * @return gender
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Doctor's gender")
 
 
   public String getGender() {

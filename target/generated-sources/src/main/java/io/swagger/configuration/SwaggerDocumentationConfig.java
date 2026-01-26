@@ -16,8 +16,8 @@ public class SwaggerDocumentationConfig {
 
     ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("API Store - your-service-name")
-            .description("Sample Swagger file for REST Endpoints")
+            .title("Jamesng AKS demo")
+            .description("Jamesng AKS demo")
             .license("Manulife Asia")
             .licenseUrl("http://www.manulife.com")
             .termsOfServiceUrl("")

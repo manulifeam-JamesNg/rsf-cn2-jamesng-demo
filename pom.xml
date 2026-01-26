@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.manulife.ap</groupId>
-	<artifactId>rsf-connect-mongodb</artifactId>
+	<artifactId>rsf-cn2-jamesng-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>rsf-connect-mongodb micro-service</name>
+	<name>rsf-cn2-jamesng-demo micro-service</name>
 	<url>https://mfc.sharepoint.com/sites/asiatemp/asiadigital/DE/Microservices/Home.aspx</url>
-	<description>Customize your project based on generated template file</description>
+	<description>James Demo - Doctors API with MongoDB</description>
 
 	<!-- Source control : Need to change according to your github project -->
 	<!-- <scm> <url>https://git.ap.manulife.com/msl</url> <connection>scm:git:https://git.ap.manulife.com/msl/demo-service.git</connection> 
@@ -88,17 +88,19 @@
 			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
 		</dependency>
 		
-		<!-- Swagger Dependencies -->
+		<!-- Springfox 2.9.2 - compatible with swagger-codegen 2.3.0 -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.9.2</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-annotations</artifactId>
@@ -139,6 +141,26 @@
 	<!-- Build plugins -->
 	<build>
 		<plugins>
+			<!-- Build Helper Plugin to add generated sources -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${project.basedir}/target/generated-sources/src/main/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<!-- Swagger -->
 			<plugin>
 				<groupId>io.swagger</groupId>

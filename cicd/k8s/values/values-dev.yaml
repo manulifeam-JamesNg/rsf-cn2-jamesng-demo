@@ -1,0 +1,36 @@
+env: dev
+release: 1.0-SNAPSHOT
+tier: backend
+country: ap
+budev: ato
+bu: ro
+track: core
+costcenter: 8685
+pxxdata: pii
+
+virtualService:
+  gatewayName: istio-system/istio-ingressgateway
+  hosts:
+    - rsf-cn2-jamesng-demo.ns-mua-training
+  https:
+    - httpName: rsf-cn2-jamesng-demo
+      uri:
+        prefix: "/"
+      rewrite:
+        uri: "/"
+      destinations:
+        - targetSubset: v1
+          weight: 100
+      timeout: 800ms
+      retries:
+        attempts: 3
+        perTryTimeout: 300ms
+        retryOn: 5xx
+
+resources:
+  limits:
+    cpu: "1000m"
+    memory: "2048Mi"
+  requests:
+    cpu: "600m"
+    memory: "1024Mi"

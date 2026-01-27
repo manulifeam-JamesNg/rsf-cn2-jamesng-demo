@@ -1,0 +1,44 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Jamesng AKS demo - HeartBeat API",
+    "version": "1.0.0",
+    "title": "Jamesng AKS demo",
+    "termsOfService": "https://manulife.com/",
+    "contact": {
+      "email": "yourname@manulife.com"
+    },
+    "license": {
+      "name": "Manulife Asia",
+      "url": "http://www.manulife.com"
+    }
+  },
+  "host": "eas-hk-dev-api.ap.manulife.com",
+  "basePath": "/james",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/beat": {
+      "get": {
+        "tags": [
+          "Utils - Heart Beat Controller"
+        ],
+        "summary": "Heart beat",
+        "description": "Check if the service is alive",
+        "operationId": "beat",
+        "produces": [
+          "text/plain"
+        ],
+        "responses": {
+          "200": {
+            "description": "Service is alive",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

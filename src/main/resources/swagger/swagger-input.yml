@@ -9,7 +9,7 @@ info:
   license:
     name: Manulife Asia
     url: 'http://www.manulife.com'
-host: 10.162.127.108
+host: eas-hk-dev-api.ap.manulife.com
 basePath: /james
 schemes:
   - http

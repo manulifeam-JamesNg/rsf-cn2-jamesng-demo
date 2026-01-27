@@ -1,0 +1,206 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Jamesng AKS demo",
+    "version": "1.0.0",
+    "title": "Jamesng AKS demo",
+    "termsOfService": "https://manulife.com/",
+    "contact": {
+      "email": "yourname@manulife.com"
+    },
+    "license": {
+      "name": "Manulife Asia",
+      "url": "http://www.manulife.com"
+    }
+  },
+  "host": "eas-hk-dev-api.ap.manulife.com",
+  "basePath": "/james",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/doctors": {
+      "get": {
+        "tags": [
+          "doctors"
+        ],
+        "summary": "Get all doctors",
+        "description": "Retrieve all doctors from MongoDB",
+        "operationId": "getAllDoctors",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Doctor"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "doctors"
+        ],
+        "summary": "Create a new doctor",
+        "description": "Insert a new doctor into MongoDB",
+        "operationId": "createDoctor",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "doctor",
+            "description": "Doctor object to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Doctor"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Doctor created successfully",
+            "schema": {
+              "$ref": "#/definitions/Doctor"
+            }
+          }
+        }
+      }
+    },
+    "/doctors/{id}": {
+      "get": {
+        "tags": [
+          "doctors"
+        ],
+        "summary": "Get doctor by ID",
+        "description": "Retrieve a specific doctor by ID",
+        "operationId": "getDoctorById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Doctor ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Doctor"
+            }
+          },
+          "404": {
+            "description": "Doctor not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "doctors"
+        ],
+        "summary": "Update doctor",
+        "description": "Update an existing doctor",
+        "operationId": "updateDoctor",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Doctor ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "doctor",
+            "description": "Updated doctor object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Doctor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Doctor updated successfully",
+            "schema": {
+              "$ref": "#/definitions/Doctor"
+            }
+          },
+          "404": {
+            "description": "Doctor not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "doctors"
+        ],
+        "summary": "Delete doctor",
+        "description": "Delete a doctor by ID",
+        "operationId": "deleteDoctor",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Doctor ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Doctor deleted successfully"
+          },
+          "404": {
+            "description": "Doctor not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Doctor": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier (MongoDB ObjectId)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Doctor's name"
+        },
+        "gender": {
+          "type": "string",
+          "description": "Doctor's gender"
+        }
+      }
+    }
+  }
+}

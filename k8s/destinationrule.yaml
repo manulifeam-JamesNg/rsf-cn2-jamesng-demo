@@ -1,10 +1,10 @@
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  name: drl-rsf-connect-mongodb
+  name: drl-rsf-cn2-jamesng-demo
   namespace: ns-mua-training
 spec:
-  host: svc-rsf-connect-mongodb.ns-mua-training.svc.cluster.local
+  host: svc-rsf-cn2-jamesng-demo.ns-mua-training.svc.cluster.local
   trafficPolicy:
     connectionPool:
       tcp:

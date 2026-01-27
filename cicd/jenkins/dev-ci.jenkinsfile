@@ -1,8 +1,6 @@
 pipelineJavaMavenAksCI(
-    pipelineRepository: "https://github.com/manulifeam-JamesNg/rsf-cn2-jamesng-demo-cicd.git",
-    pipelinePropertiesDir: "pipeline",
-    commonPropertiesFileName: "pipeline/jenkins/ci.properties",
-    propertiesFileName: "pipeline/jenkins/ci.properties",
-    skipUpdateBranches: "true",
-    pipelineRepoBranches: [[name:'master']]
+    pipelinePropertiesDir: "cicd",
+    commonPropertiesFileName: "cicd/jenkins/ci.properties",
+    propertiesFileName: "cicd/jenkins/pipeline.properties",
+    skipUpdateBranches: "true"
 )

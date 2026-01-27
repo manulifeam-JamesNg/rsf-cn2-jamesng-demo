@@ -1,4 +1,4 @@
-pipelineJavaMavenAksCi(
+pipelineJavaMavenAksCI(
     pipelineRepository: "https://github.com/manulifeam-JamesNg/rsf-cn2-jamesng-demo-cicd.git",
     pipelinePropertiesDir: "pipeline",
     commonPropertiesFileName: "pipeline/jenkins/ci.properties",

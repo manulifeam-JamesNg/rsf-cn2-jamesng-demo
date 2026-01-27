@@ -18,6 +18,33 @@
 	<properties>
 		<swagger.service.package>com.manulife.ap.rsf-connect-mongodb</swagger.service.package>
 		<swagger-codegen-maven-plugin.version>2.3.0</swagger-codegen-maven-plugin.version>
+		
+		<!-- SonarQube exclusions -->
+		<sonar.exclusions>
+			**/controller/*_*.java,
+			**/model/*_*.java,
+			**/repository/*_*.java,
+			**/*_*.java
+		</sonar.exclusions>
+		
+		<!-- Docker configuration -->
+		<docker.image.prefix>artifactory.ap.manulife.com/docker/</docker.image.prefix>
+		<dockerfile-maven-plugin.version>1.4.12</dockerfile-maven-plugin.version>
+		<dockerfile.skip>true</dockerfile.skip>
+		
+		<!-- Maven clean plugin -->
+		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+		<artifactory-maven-plugin.version>3.2.1</artifactory-maven-plugin.version>
+		
+		<!-- SonarQube server URL -->
+		<sonar.server.url>https://sonar.ap.manulife.com/</sonar.server.url>
+		<sonar.login></sonar.login>
+		
+		<!-- RSF compliance -->
+		<dockerfile.skip>true</dockerfile.skip>
+		<rsf.compliance.publish>false</rsf.compliance.publish>
+		<rsf.compliance.service.url>http://localhost:8080/rsf-compliance.service.url</rsf.compliance.service.url>
+		
 		<!-- <team.your.name></team.your.name> <team.your.email></team.your.email> 
 			<team.url></team.url> <team.email></team.email> <team.zone></team.zone> -->
 	</properties>

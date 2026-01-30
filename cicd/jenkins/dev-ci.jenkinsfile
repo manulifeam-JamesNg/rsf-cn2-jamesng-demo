@@ -1,6 +1,6 @@
 pipelineJavaMavenAksCI(
     pipelinePropertiesDir: "cicd",
-    commonPropertiesFileName: "cicd/jenkins/ci.properties",
-    propertiesFileName: "cicd/jenkins/pipeline.properties",
+    commonPropertiesFileName: "jenkins/ci.properties",
+    propertiesFileName: "jenkins/pipeline.properties",
     skipUpdateBranches: "true"
 )

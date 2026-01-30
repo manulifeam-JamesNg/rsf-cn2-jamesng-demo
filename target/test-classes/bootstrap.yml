@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: rsf-connect-mongodb
-  #Only for local build uncomment below lines.
-  cloud:
-    config:
-      uri: http://localhost:8888

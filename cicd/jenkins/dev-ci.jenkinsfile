@@ -1,0 +1,6 @@
+pipelineJavaMavenAksCI(
+    commonPropertiesFileName: "cicd/jenkins/ci.properties",
+    propertiesFileName: "cicd/jenkins/pipeline.properties",
+    skipUpdateBranches: "true",
+    skipSnykScan: true
+)

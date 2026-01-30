@@ -1,0 +1,63 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <pluginGroups> </pluginGroups>
+    <proxies>
+        <proxy>
+            <id>optional</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <username>proxyuser</username>
+            <password>proxypass</password>
+            <host>10.235.60.12</host>
+            <port>3128</port>
+            <nonProxyHosts>artifactory.ap.manulife.com</nonProxyHosts>
+        </proxy>
+    </proxies>
+    <servers></servers>
+    <mirrors></mirrors>
+    <profiles>
+        <profile>
+            <id>manulife-artifactory</id>
+            <properties>
+                <artifactoryUser>user</artifactoryUser>
+                <artifactoryPassword>APCYXWVLjd5ufKYq</artifactoryPassword>
+                <artifactoryContextUrl>https://artifactory.ap.manulife.com/artifactory</artifactoryContextUrl>
+                <jacoco.output.file>${project.basedir}/jacoco-server.exec</jacoco.output.file>
+            </properties>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>central</id>
+                    <name>libs-release</name>
+                    <url>https://artifactory.ap.manulife.com/artifactory/libs-release</url>
+                </repository>
+                <repository>
+                    <snapshots />
+                    <id>snapshots</id>
+                    <name>libs-snapshot</name>
+                    <url>https://artifactory.ap.manulife.com/artifactory/libs-snapshot</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>central</id>
+                    <name>plugins-release</name>
+                    <url>https://artifactory.ap.manulife.com/artifactory/plugins-release</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <snapshots />
+                    <id>snapshots</id>
+                    <name>plugins-snapshot</name>
+                    <url>https://artifactory.ap.manulife.com/artifactory/plugins-snapshot</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>manulife-artifactory</activeProfile>
+    </activeProfiles>
+</settings>
